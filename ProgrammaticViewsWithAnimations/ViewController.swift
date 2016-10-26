@@ -92,7 +92,6 @@ class ViewController: UIViewController {
     }
 
     func buttonTapped() {
-
         let topLeftColor = topLeftButton.backgroundColor
         let topRightColor = topRightButton.backgroundColor
         let bottomLeftColor = bottomLeftButton.backgroundColor
@@ -104,11 +103,26 @@ class ViewController: UIViewController {
             self.bottomRightButton.backgroundColor = topRightColor
             self.bottomLeftButton.backgroundColor = bottomRightColor
         }
-
     }
 
-    func buttonExited() {
-    
+    func buttonExited(_ sender: UIButton) {
+        let position1 = sender.frame.origin.x + sender.frame.width / 2
+        let position2 = sender.frame.origin.x + sender.frame.width / 2 - 15
+        let position3 = sender.frame.origin.x + sender.frame.width / 2
+        let position4 = sender.frame.origin.x + sender.frame.width / 2 + 15
+        let position5 = sender.frame.origin.x + sender.frame.width / 2
+        
+        view.bringSubview(toFront: sender)
+        
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.x"
+        animation.values = [position1, position2, position3, position4, position5]
+        
+        animation.keyTimes = [0, 0.25, 0.5, 0.75, 1]
+        animation.duration = 0.5
+        animation.repeatCount = 5.0
+        
+        sender.layer.add(animation, forKey: "shake")
     }
 }
 
