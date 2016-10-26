@@ -92,7 +92,19 @@ class ViewController: UIViewController {
     }
 
     func buttonTapped() {
+
+        let topLeftColor = topLeftButton.backgroundColor
+        let topRightColor = topRightButton.backgroundColor
+        let bottomLeftColor = bottomLeftButton.backgroundColor
+        let bottomRightColor = bottomRightButton.backgroundColor
         
+        UIView.animate(withDuration: 1.0) {
+            self.topLeftButton.backgroundColor = bottomLeftColor
+            self.topRightButton.backgroundColor = topLeftColor
+            self.bottomRightButton.backgroundColor = topRightColor
+            self.bottomLeftButton.backgroundColor = bottomRightColor
+        }
+
     }
 
     func buttonExited() {
